@@ -56,6 +56,17 @@ When a new burst begins, the Master alerts the Slave using `HTRANS`:
 * **NONSEQ (`2'b10`):** The very first beat of a burst. Wakes up the Slave and provides the base address.
 * **SEQ (`2'b11`):** All subsequent beats. The Slave automatically knows to increment or wrap the address based on the `HBURST` type.
 
+* ## 📂 File Sequence (How to read this project)
+To understand the architecture, please review the Verilog files in this logical order:
+
+1. **`Top.v`** *(If you have one - The top-level wrapper connecting everything)*
+2. **`MASTER_H.v`** *(The brain of the operation generating addresses and bursts)*
+3. **`decoder.v`** *(The address decoder routing signals to slaves)*
+4. **`H_MUX.v`** *(The pipelined multiplexer handling read data)*
+5. **`M_data_mem.v`** *(The Master's internal memory)*
+6. **`S_data_mem.v`, `S_data_mem1.v`, `S_data_mem2.v`** *(The three slave memory blocks)*
+7. **`H_testbench.v`** *(The simulation environment to verify the protocol)*
+
 ### IDLE vs. BUSY
 * **IDLE (`2'b00`):** Like hanging up the phone. The Master is saying, "I have no more data for you. Our conversation is over." To talk again, the Master must send a new `NONSEQ` command.
 * **BUSY (`2'b01`):** Like putting the Slave on hold. The Master is saying, "We are in the middle of a burst... my internal brain needs a second to fetch the next word. DO NOT hang up, I will be right back." The burst resumes smoothly without dropping the connection.
