@@ -40,15 +40,13 @@ module S_data_mem1(
     wire [31:0] internal_index = HADDR >> 2;
     
     always @(negedge HCLK && HSEL_2 == 1 && HTRANS != 2'b00)begin
-            r3 <= internal_index;
+          r3 <= internal_index;
           prev_write <= HWRITE;
           if(prev_write == 1)
             register[r3] <= HWDATA;
         
           if(HWRITE==0 && HREADY==1 && HTRANS != 2'b01) 
             HRDATA_2 <= register[internal_index];
-
-        
-        end
+          end
         
 endmodule

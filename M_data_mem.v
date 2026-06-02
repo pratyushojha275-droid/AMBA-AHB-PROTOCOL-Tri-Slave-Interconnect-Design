@@ -81,9 +81,11 @@ module M_data_mem(
     register[63] = 32'd332;
     
     end 
+    
     reg [31:0]r3;
     reg prev_read;
     wire [31:0] internal_index = HADDR_M >> 2;
+    
     always @(negedge HCLK && HTRANS != 2'b01)begin  
           if(HTRANS != 2'b00)begin
             r3 <= internal_index;
@@ -92,12 +94,9 @@ module M_data_mem(
           if(prev_read == 0)
           register[r3] <= HRDATA;
 
-        if(HWRITE==1)begin
-        
+          if(HWRITE==1)begin
             HWDATA <= register[internal_index];
-            
-            
-        end 
-        end  
+          end 
+          end  
     
 endmodule
