@@ -354,8 +354,6 @@ module H_testbench;
         if ($time < 1000) begin
             #(1000 - $time);
         end
-        
-        $display("--- SIMULATION REACHED 1000ns. FINISHED. ---");
         $finish;
     end
 
