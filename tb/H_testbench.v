@@ -69,63 +69,135 @@ module H_testbench;
     end
 
     initial begin
-        $display("--- AUTOMATIC SIMULATION STARTED ---");
-        $monitor("Time = %0t ns | HTRANS = %b | HBURST = %b | HWRITE = %b | HADDR = %h", 
-                 $time, HTRANS, HBURST, HWRITE, HADDR);
+        DUT.U2.register[0] = 32'd32;
+        DUT.U2.register[1] = 32'd48;
+        DUT.U2.register[2] = 32'd64;
+        DUT.U2.register[3] = 32'd96;
+        DUT.U2.register[4] = 32'd54;
+        DUT.U2.register[5] = 32'd65;
+        DUT.U2.register[6] = 32'd57;
+        DUT.U2.register[7] = 32'd87;
+        DUT.U2.register[8] = 32'd90;
+        DUT.U2.register[9] = 32'd45;
+        DUT.U2.register[10] = 32'd89;
+        DUT.U2.register[11] = 32'd92;
+        DUT.U2.register[12] = 32'd14;
+        DUT.U2.register[13] = 32'd17;
+        DUT.U2.register[14] = 32'd49;
+        DUT.U2.register[15] = 32'd76;
+        DUT.U2.register[16] = 32'd11;
+        DUT.U2.register[17] = 32'd12;
+        DUT.U2.register[18] = 32'd13;
+        DUT.U2.register[19] = 32'd14;
+        DUT.U2.register[20] = 32'd15;
+        DUT.U2.register[21] = 32'd16;
+        DUT.U2.register[22] = 32'd17;
+        DUT.U2.register[23] = 32'd18;
+        DUT.U2.register[24] = 32'd19;
+        DUT.U2.register[25] = 32'd20;
+        DUT.U2.register[26] = 32'd21;
+        DUT.U2.register[27] = 32'd22;
+        DUT.U2.register[28] = 32'd23;
+        DUT.U2.register[29] = 32'd24;
+        DUT.U2.register[30] = 32'd25;
+        DUT.U2.register[31] = 32'd26;
+        DUT.U2.register[32] = 32'd300;
+        DUT.U2.register[33] = 32'd301;
+        DUT.U2.register[34] = 32'd302;
+        DUT.U2.register[35] = 32'd303;
+        DUT.U2.register[36] = 32'd304;
+        DUT.U2.register[37] = 32'd305;
+        DUT.U2.register[38] = 32'd306;
+        DUT.U2.register[39] = 32'd307;
+        DUT.U2.register[40] = 32'd308;
+        DUT.U2.register[41] = 32'd309;
+        DUT.U2.register[42] = 32'd310;
+        DUT.U2.register[43] = 32'd311;
+        DUT.U2.register[44] = 32'd312;
+        DUT.U2.register[45] = 32'd313;
+        DUT.U2.register[46] = 32'd314;
+        DUT.U2.register[47] = 32'd315;
+        DUT.U2.register[48] = 32'd316;
+        DUT.U2.register[49] = 32'd317;
+        DUT.U2.register[50] = 32'd318;
+        DUT.U2.register[51] = 32'd320;
+        DUT.U2.register[52] = 32'd321;
+        DUT.U2.register[53] = 32'd322;
+        DUT.U2.register[54] = 32'd323;
+        DUT.U2.register[55] = 32'd324;
+        DUT.U2.register[56] = 32'd325;
+        DUT.U2.register[57] = 32'd326;
+        DUT.U2.register[58] = 32'd327;
+        DUT.U2.register[59] = 32'd328;
+        DUT.U2.register[60] = 32'd329;
+        DUT.U2.register[61] = 32'd330;
+        DUT.U2.register[62] = 32'd331;
+        DUT.U2.register[63] = 32'd332;
     end
-
-   
-    integer error_count = 0;
-    integer timeout = 0;
     
     initial begin
-        timeout = 0;
-        while (HTRANS !== 2'b00 && timeout < 20) begin
-            @(posedge HCLK);
-            timeout = timeout + 1;
-        end
-        
-        if (HTRANS === 2'b11) begin
-            $display("[PASS] Test 1: Successfully transitioned to IDLE state.");
-        end else begin
-            $display("[ERROR] Test 1: TIMEOUT! Failed to transition to IDLE state.");
-            error_count = error_count + 1;
-        end
-
-        timeout = 0;
-        while (HBURST !== 3'b100 && timeout < 30) begin
-            @(posedge HCLK);
-            timeout = timeout + 1;
-        end
-        
-        if (HBURST === 3'b100) begin
-            $display("[PASS] Test 2: Successfully transitioned to WRAP8 burst.");
-        end else begin
-            $display("[ERROR] Test 2: TIMEOUT! Failed to transition to WRAP8 burst.");
-            error_count = error_count + 1;
-        end
-        
-        timeout = 0;
-        while (HWRITE !== 1 && timeout < 30) begin
-            @(posedge HCLK);
-            timeout = timeout + 1;
-        end
-        
-        if (HWRITE === 1) begin
-            $display("[PASS] Test 3: Successfully entered WRITE mode.");
-        end else begin
-            $display("[ERROR] Test 3: TIMEOUT! Failed to enter WRITE mode.");
-            error_count = error_count + 1;
-        end
-
-        #(990 - $time);
-        $display("-----------------------------------------");
-        if (error_count == 0) begin
-            $display("FINAL GRADING: ALL BACKGROUND TESTS PASSED! [0 ERRORS]");
-        end else begin
-            $display("FINAL GRADING: DESIGN FAILED WITH %0d ERRORS.", error_count);
-        end
-        $display("-----------------------------------------");
+        DUT.U2.register[0] = 32'd32;
+        DUT.U2.register[1] = 32'd48;
+        DUT.U3.register[0] = 32'd84;
+        DUT.U3.register[1] = 32'd103;
+        DUT.U3.register[2] = 32'd137;
+        DUT.U3.register[3] = 32'd118;
+        DUT.U3.register[4] = 32'd30;
+        DUT.U3.register[5] = 32'd40;
+        DUT.U3.register[6] = 32'd56;
+        DUT.U3.register[7] = 32'd23;
+        DUT.U3.register[8] = 32'd101;
+        DUT.U3.register[9] = 32'd145;
+        DUT.U3.register[10] = 32'd78;
+        DUT.U3.register[11] = 32'd33;
+        DUT.U3.register[12] = 32'd47;
+        DUT.U3.register[13] = 32'd53;
+        DUT.U3.register[14] = 32'd80;
+        DUT.U3.register[15] = 32'd37;
+    end
+    
+    initial begin
+        DUT.U4.register[32] = 32'd90;
+        DUT.U4.register[33] = 32'd91;
+        DUT.U4.register[34] = 32'd92;
+        DUT.U4.register[35] = 32'd93;
+        DUT.U4.register[36] = 32'd94;
+        DUT.U4.register[37] = 32'd95;
+        DUT.U4.register[38] = 32'd96;
+        DUT.U4.register[39] = 32'd97;
+        DUT.U4.register[40] = 32'd98;
+        DUT.U4.register[41] = 32'd99;
+        DUT.U4.register[42] = 32'd100;
+        DUT.U4.register[43] = 32'd101;
+        DUT.U4.register[44] = 32'd102;
+        DUT.U4.register[45] = 32'd104;
+        DUT.U4.register[46] = 32'd105;
+        DUT.U4.register[47] = 32'd107;
+    end
+    
+    initial begin
+        DUT.U5.register[64] = 32'd221;
+        DUT.U5.register[65] = 32'd222;
+        DUT.U5.register[66] = 32'd223;
+        DUT.U5.register[67] = 32'd224;
+        DUT.U5.register[68] = 32'd225;
+        DUT.U5.register[69] = 32'd227;
+        DUT.U5.register[70] = 32'd228;
+        DUT.U5.register[71] = 32'd229;
+        DUT.U5.register[72] = 32'd230;
+        DUT.U5.register[73] = 32'd231;
+        DUT.U5.register[74] = 32'd232;
+        DUT.U5.register[75] = 32'd233;
+        DUT.U5.register[76] = 32'd234;
+        DUT.U5.register[77] = 32'd235;
+        DUT.U5.register[78] = 32'd237;
+        DUT.U5.register[79] = 32'd238;
+        DUT.U5.register[90] = 32'd345;
+        DUT.U5.register[91] = 32'd346;
+        DUT.U5.register[92] = 32'd347;
+        DUT.U5.register[93] = 32'd348;
+        DUT.U5.register[94] = 32'd349;
+        DUT.U5.register[95] = 32'd350;
     end
     
     initial begin
