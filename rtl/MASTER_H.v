@@ -205,7 +205,7 @@ module MASTER_H(
                 HBURST <= 3'b010;
                 if(count2 == 0)
                 HTRANS <= 2'b10;
-                if(count2 > 0 && count2 < 3)
+                if(count2 > 0 && count2 < 4)
                 HTRANS <= 2'b11;
                 if(new == 1)begin
                 O <= 32'd4;
@@ -584,3 +584,4 @@ module MASTER_H(
      end
      end                                           
 endmodule
+
