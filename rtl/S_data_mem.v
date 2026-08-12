@@ -16,24 +16,6 @@ module S_data_mem(
     reg [31:0]register[0:31];
     integer i;
     
-    initial begin
-    register[0] = 32'd84;
-    register[1] = 32'd103;
-    register[2] = 32'd137;
-    register[3] = 32'd118;
-    register[4] = 32'd30;
-    register[5] = 32'd40;
-    register[6] = 32'd56;
-    register[7] = 32'd23;
-    register[8] = 32'd101;
-    register[9] = 32'd145;
-    register[10] = 32'd78;
-    register[11] = 32'd33;
-    register[12] = 32'd47;
-    register[13] = 32'd53;
-    register[14] = 32'd80;
-    register[15] = 32'd37;
-    end
     reg [31:0]r3;
     reg prev_write;
     wire [31:0] internal_index = HADDR >> 2;
